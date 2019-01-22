@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="locadoraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="carro">
+    <Key>
+      <PropertyRef Name="carro_codigo" />
+    </Key>
+    <Property Name="carro_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="carro_marca" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="carro_modelo" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="carro_ano" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="carro_placa" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="carro_km" Type="int" Nullable="false" />
+    <Property Name="status_codigo" Type="int" Nullable="false" />
+    <Property Name="tipocarro_codigo" Type="int" />
+    <Property Name="carro_cor" Type="varchar" MaxLength="20" />
+    <Property Name="carro_nome" Type="varchar" MaxLength="20" />
+    <Property Name="carro_valorDiaria" Type="money" />
+  </EntityType>
+  <EntityType Name="cidade">
+    <Key>
+      <PropertyRef Name="cidade_codigo" />
+    </Key>
+    <Property Name="cidade_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cidade_nome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cidade_uf" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="cliente_codigo" />
+    </Key>
+    <Property Name="cliente_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cliente_nome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cliente_cpf" Type="varchar" MaxLength="14" Nullable="false" />
+    <Property Name="cliente_dataNascimento" Type="date" Nullable="false" />
+    <Property Name="cliente_cnh" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="cliente_rg" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="cliente_endereco" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="cliente_telefoneFixo" Type="varchar" MaxLength="12" />
+    <Property Name="cliente_telefoneCelular" Type="varchar" MaxLength="13" />
+    <Property Name="cidade_codigo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="devolucao">
+    <Key>
+      <PropertyRef Name="devolucao_codigo" />
+    </Key>
+    <Property Name="devolucao_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="devolucao_status" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="filial_codigo" Type="int" />
+    <Property Name="devolucao_km" Type="int" />
+    <Property Name="devolucao_dataEfetiva" Type="datetime" />
+  </EntityType>
+  <EntityType Name="filial">
+    <Key>
+      <PropertyRef Name="filial_codigo" />
+    </Key>
+    <Property Name="filial_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="filial_nome" Type="varchar" MaxLength="50" />
+    <Property Name="cidade_codigo" Type="int" />
+  </EntityType>
+  <EntityType Name="funcionario">
+    <Key>
+      <PropertyRef Name="funcionario_codigo" />
+    </Key>
+    <Property Name="funcionario_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="funcionario_nome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="funcionario_cpf" Type="varchar" MaxLength="14" Nullable="false" />
+    <Property Name="funcionario_dataNascimento" Type="date" Nullable="false" />
+    <Property Name="funcionario_cnh" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="funcionario_rg" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="funcionario_endereco" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="funcionario_telefoneFixo" Type="varchar" MaxLength="12" />
+    <Property Name="funcionario_telefoneCelular" Type="varchar" MaxLength="13" />
+    <Property Name="cidade_codigo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="locacao">
+    <Key>
+      <PropertyRef Name="locacao_codigo" />
+    </Key>
+    <Property Name="locacao_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="locacao_dataLocacao" Type="date" Nullable="false" />
+    <Property Name="locacao_qtdeDias" Type="int" Nullable="false" />
+    <Property Name="locacao_dataDevolucao" Type="date" />
+    <Property Name="locacao_totalLocacao" Type="money" />
+    <Property Name="carro_codigo" Type="int" Nullable="false" />
+    <Property Name="cliente_codigo" Type="int" Nullable="false" />
+    <Property Name="funcionario_codigo" Type="int" Nullable="false" />
+    <Property Name="tipopagamento_codigo" Type="int" Nullable="false" />
+    <Property Name="devolucao_codigo" Type="int" Nullable="false" />
+    <Property Name="filial_codigo" Type="int" />
+  </EntityType>
+  <EntityType Name="status">
+    <Key>
+      <PropertyRef Name="status_codigo" />
+    </Key>
+    <Property Name="status_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="status_nome" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tipocarro">
+    <Key>
+      <PropertyRef Name="tipocarro_codigo" />
+    </Key>
+    <Property Name="tipocarro_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipocarro_tipo" Type="varchar" MaxLength="20" />
+    <Property Name="tipocarro_valor" Type="money" />
+  </EntityType>
+  <EntityType Name="tipopagamento">
+    <Key>
+      <PropertyRef Name="tipopagamento_codigo" />
+    </Key>
+    <Property Name="tipopagamento_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipopagamento_nome" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__carro__status_co__412EB0B6">
+    <End Role="status" Type="Self.status" Multiplicity="1" />
+    <End Role="carro" Type="Self.carro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status">
+        <PropertyRef Name="status_codigo" />
+      </Principal>
+      <Dependent Role="carro">
+        <PropertyRef Name="status_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__carro__tipocarro__5EBF139D">
+    <End Role="tipocarro" Type="Self.tipocarro" Multiplicity="0..1" />
+    <End Role="carro" Type="Self.carro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipocarro">
+        <PropertyRef Name="tipocarro_codigo" />
+      </Principal>
+      <Dependent Role="carro">
+        <PropertyRef Name="tipocarro_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__cliente__cidade___3C69FB99">
+    <End Role="cidade" Type="Self.cidade" Multiplicity="1" />
+    <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cidade">
+        <PropertyRef Name="cidade_codigo" />
+      </Principal>
+      <Dependent Role="cliente">
+        <PropertyRef Name="cidade_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__devolucao__filia__619B8048">
+    <End Role="filial" Type="Self.filial" Multiplicity="0..1" />
+    <End Role="devolucao" Type="Self.devolucao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="filial">
+        <PropertyRef Name="filial_codigo" />
+      </Principal>
+      <Dependent Role="devolucao">
+        <PropertyRef Name="filial_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__filial__cidade_c__6E01572D">
+    <End Role="cidade" Type="Self.cidade" Multiplicity="0..1" />
+    <End Role="filial" Type="Self.filial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cidade">
+        <PropertyRef Name="cidade_codigo" />
+      </Principal>
+      <Dependent Role="filial">
+        <PropertyRef Name="cidade_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__funcionar__cidad__440B1D61">
+    <End Role="cidade" Type="Self.cidade" Multiplicity="1" />
+    <End Role="funcionario" Type="Self.funcionario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cidade">
+        <PropertyRef Name="cidade_codigo" />
+      </Principal>
+      <Dependent Role="funcionario">
+        <PropertyRef Name="cidade_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__locacao__carro_c__4CA06362">
+    <End Role="carro" Type="Self.carro" Multiplicity="1" />
+    <End Role="locacao" Type="Self.locacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="carro">
+        <PropertyRef Name="carro_codigo" />
+      </Principal>
+      <Dependent Role="locacao">
+        <PropertyRef Name="carro_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__locacao__cliente__4D94879B">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+    <End Role="locacao" Type="Self.locacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="cliente_codigo" />
+      </Principal>
+      <Dependent Role="locacao">
+        <PropertyRef Name="cliente_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__locacao__devoluc__5165187F">
+    <End Role="devolucao" Type="Self.devolucao" Multiplicity="1" />
+    <End Role="locacao" Type="Self.locacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="devolucao">
+        <PropertyRef Name="devolucao_codigo" />
+      </Principal>
+      <Dependent Role="locacao">
+        <PropertyRef Name="devolucao_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__locacao__filial___628FA481">
+    <End Role="filial" Type="Self.filial" Multiplicity="0..1" />
+    <End Role="locacao" Type="Self.locacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="filial">
+        <PropertyRef Name="filial_codigo" />
+      </Principal>
+      <Dependent Role="locacao">
+        <PropertyRef Name="filial_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__locacao__funcion__4E88ABD4">
+    <End Role="funcionario" Type="Self.funcionario" Multiplicity="1" />
+    <End Role="locacao" Type="Self.locacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="funcionario">
+        <PropertyRef Name="funcionario_codigo" />
+      </Principal>
+      <Dependent Role="locacao">
+        <PropertyRef Name="funcionario_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__locacao__tipopag__5070F446">
+    <End Role="tipopagamento" Type="Self.tipopagamento" Multiplicity="1" />
+    <End Role="locacao" Type="Self.locacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipopagamento">
+        <PropertyRef Name="tipopagamento_codigo" />
+      </Principal>
+      <Dependent Role="locacao">
+        <PropertyRef Name="tipopagamento_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="locadoraModelStoreContainer">
+    <EntitySet Name="carro" EntityType="Self.carro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cidade" EntityType="Self.cidade" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="devolucao" EntityType="Self.devolucao" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="filial" EntityType="Self.filial" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="funcionario" EntityType="Self.funcionario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="locacao" EntityType="Self.locacao" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipocarro" EntityType="Self.tipocarro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipopagamento" EntityType="Self.tipopagamento" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__carro__status_co__412EB0B6" Association="Self.FK__carro__status_co__412EB0B6">
+      <End Role="status" EntitySet="status" />
+      <End Role="carro" EntitySet="carro" />
+    </AssociationSet>
+    <AssociationSet Name="FK__carro__tipocarro__5EBF139D" Association="Self.FK__carro__tipocarro__5EBF139D">
+      <End Role="tipocarro" EntitySet="tipocarro" />
+      <End Role="carro" EntitySet="carro" />
+    </AssociationSet>
+    <AssociationSet Name="FK__cliente__cidade___3C69FB99" Association="Self.FK__cliente__cidade___3C69FB99">
+      <End Role="cidade" EntitySet="cidade" />
+      <End Role="cliente" EntitySet="cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__devolucao__filia__619B8048" Association="Self.FK__devolucao__filia__619B8048">
+      <End Role="filial" EntitySet="filial" />
+      <End Role="devolucao" EntitySet="devolucao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__filial__cidade_c__6E01572D" Association="Self.FK__filial__cidade_c__6E01572D">
+      <End Role="cidade" EntitySet="cidade" />
+      <End Role="filial" EntitySet="filial" />
+    </AssociationSet>
+    <AssociationSet Name="FK__funcionar__cidad__440B1D61" Association="Self.FK__funcionar__cidad__440B1D61">
+      <End Role="cidade" EntitySet="cidade" />
+      <End Role="funcionario" EntitySet="funcionario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__locacao__carro_c__4CA06362" Association="Self.FK__locacao__carro_c__4CA06362">
+      <End Role="carro" EntitySet="carro" />
+      <End Role="locacao" EntitySet="locacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__locacao__cliente__4D94879B" Association="Self.FK__locacao__cliente__4D94879B">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="locacao" EntitySet="locacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__locacao__devoluc__5165187F" Association="Self.FK__locacao__devoluc__5165187F">
+      <End Role="devolucao" EntitySet="devolucao" />
+      <End Role="locacao" EntitySet="locacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__locacao__filial___628FA481" Association="Self.FK__locacao__filial___628FA481">
+      <End Role="filial" EntitySet="filial" />
+      <End Role="locacao" EntitySet="locacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__locacao__funcion__4E88ABD4" Association="Self.FK__locacao__funcion__4E88ABD4">
+      <End Role="funcionario" EntitySet="funcionario" />
+      <End Role="locacao" EntitySet="locacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__locacao__tipopag__5070F446" Association="Self.FK__locacao__tipopag__5070F446">
+      <End Role="tipopagamento" EntitySet="tipopagamento" />
+      <End Role="locacao" EntitySet="locacao" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

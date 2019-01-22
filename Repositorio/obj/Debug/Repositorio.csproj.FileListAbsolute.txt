@@ -1,0 +1,12 @@
+C:\Users\Renat\Documents\Documentos-Renato\Linguagens e Tecnologias de Programação Desktop II\Aula01\Projeto-Locadora\Repositorio\bin\Debug\Repositorio.dll.config
+C:\Users\Renat\Documents\Documentos-Renato\Linguagens e Tecnologias de Programação Desktop II\Aula01\Projeto-Locadora\Repositorio\bin\Debug\Repositorio.dll
+C:\Users\Renat\Documents\Documentos-Renato\Linguagens e Tecnologias de Programação Desktop II\Aula01\Projeto-Locadora\Repositorio\bin\Debug\Repositorio.pdb
+C:\Users\Renat\Documents\Documentos-Renato\Linguagens e Tecnologias de Programação Desktop II\Aula01\Projeto-Locadora\Repositorio\bin\Debug\EntityFramework.dll
+C:\Users\Renat\Documents\Documentos-Renato\Linguagens e Tecnologias de Programação Desktop II\Aula01\Projeto-Locadora\Repositorio\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Renat\Documents\Documentos-Renato\Linguagens e Tecnologias de Programação Desktop II\Aula01\Projeto-Locadora\Repositorio\bin\Debug\EntityFramework.xml
+C:\Users\Renat\Documents\Documentos-Renato\Linguagens e Tecnologias de Programação Desktop II\Aula01\Projeto-Locadora\Repositorio\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Renat\Documents\Documentos-Renato\Linguagens e Tecnologias de Programação Desktop II\Aula01\Projeto-Locadora\Repositorio\obj\Debug\Repositorio.csprojAssemblyReference.cache
+C:\Users\Renat\Documents\Documentos-Renato\Linguagens e Tecnologias de Programação Desktop II\Aula01\Projeto-Locadora\Repositorio\obj\Debug\Repositorio.csproj.CoreCompileInputs.cache
+C:\Users\Renat\Documents\Documentos-Renato\Linguagens e Tecnologias de Programação Desktop II\Aula01\Projeto-Locadora\Repositorio\obj\Debug\Repositorio.csproj.CopyComplete
+C:\Users\Renat\Documents\Documentos-Renato\Linguagens e Tecnologias de Programação Desktop II\Aula01\Projeto-Locadora\Repositorio\obj\Debug\Repositorio.dll
+C:\Users\Renat\Documents\Documentos-Renato\Linguagens e Tecnologias de Programação Desktop II\Aula01\Projeto-Locadora\Repositorio\obj\Debug\Repositorio.pdb

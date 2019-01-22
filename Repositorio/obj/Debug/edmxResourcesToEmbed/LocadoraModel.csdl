@@ -1,0 +1,644 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="locadoraModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="carro">
+    <Key>
+      <PropertyRef Name="carro_codigo" />
+    </Key>
+    <Property Name="carro_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="carro_marca" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="carro_modelo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="carro_ano" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="carro_placa" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="carro_km" Type="Int32" Nullable="false" />
+    <Property Name="status_codigo" Type="Int32" Nullable="false" />
+    <Property Name="tipocarro_codigo" Type="Int32" />
+    <Property Name="carro_cor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="carro_nome" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="carro_valorDiaria" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="status" Relationship="Self.FK__carro__status_co__412EB0B6" FromRole="carro" ToRole="status" />
+    <NavigationProperty Name="tipocarro" Relationship="Self.FK__carro__tipocarro__5EBF139D" FromRole="carro" ToRole="tipocarro" />
+    <NavigationProperty Name="locacao" Relationship="Self.FK__locacao__carro_c__4CA06362" FromRole="carro" ToRole="locacao" />
+  </EntityType>
+  <EntityType Name="cidade">
+    <Key>
+      <PropertyRef Name="cidade_codigo" />
+    </Key>
+    <Property Name="cidade_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cidade_nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cidade_uf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="cliente" Relationship="Self.FK__cliente__cidade___3C69FB99" FromRole="cidade" ToRole="cliente" />
+    <NavigationProperty Name="filial" Relationship="Self.FK__filial__cidade_c__6E01572D" FromRole="cidade" ToRole="filial" />
+    <NavigationProperty Name="funcionario" Relationship="Self.FK__funcionar__cidad__440B1D61" FromRole="cidade" ToRole="funcionario" />
+  </EntityType>
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="cliente_codigo" />
+    </Key>
+    <Property Name="cliente_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cliente_nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cliente_cpf" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cliente_dataNascimento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="cliente_cnh" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cliente_rg" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cliente_endereco" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cliente_telefoneFixo" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="cliente_telefoneCelular" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="cidade_codigo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="cidade" Relationship="Self.FK__cliente__cidade___3C69FB99" FromRole="cliente" ToRole="cidade" />
+    <NavigationProperty Name="locacao" Relationship="Self.FK__locacao__cliente__4D94879B" FromRole="cliente" ToRole="locacao" />
+  </EntityType>
+  <EntityType Name="devolucao">
+    <Key>
+      <PropertyRef Name="devolucao_codigo" />
+    </Key>
+    <Property Name="devolucao_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="devolucao_dataEfetiva" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="filial_codigo" Type="Int32" Nullable="false" />
+    <Property Name="devolucao_km" Type="Int32" Nullable="false" />
+    <Property Name="devolucao_multa" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="tipopagamento_codigo" Type="Int32" />
+    <Property Name="locacao_codigo" Type="Int32" Nullable="false" />
+    <Property Name="status_codigo" Type="Int32" Nullable="false" />
+    <Property Name="devolucao_diferencaDias" Type="Int32" />
+    <NavigationProperty Name="filial" Relationship="Self.FK__devolucao__filia__619B8048" FromRole="devolucao" ToRole="filial" />
+    <NavigationProperty Name="locacao" Relationship="Self.FK__devolucao__locac__2645B050" FromRole="devolucao" ToRole="locacao" />
+    <NavigationProperty Name="status" Relationship="Self.FK__devolucao__statu__44CA3770" FromRole="devolucao" ToRole="status" />
+    <NavigationProperty Name="tipopagamento" Relationship="Self.FK__devolucao__tipop__25518C17" FromRole="devolucao" ToRole="tipopagamento" />
+  </EntityType>
+  <EntityType Name="filial">
+    <Key>
+      <PropertyRef Name="filial_codigo" />
+    </Key>
+    <Property Name="filial_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="filial_nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cidade_codigo" Type="Int32" />
+    <NavigationProperty Name="cidade" Relationship="Self.FK__filial__cidade_c__6E01572D" FromRole="filial" ToRole="cidade" />
+    <NavigationProperty Name="devolucao" Relationship="Self.FK__devolucao__filia__619B8048" FromRole="filial" ToRole="devolucao" />
+    <NavigationProperty Name="locacao" Relationship="Self.FK__locacao__filial___628FA481" FromRole="filial" ToRole="locacao" />
+  </EntityType>
+  <EntityType Name="funcionario">
+    <Key>
+      <PropertyRef Name="funcionario_codigo" />
+    </Key>
+    <Property Name="funcionario_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="funcionario_nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="funcionario_cpf" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="funcionario_dataNascimento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="funcionario_cnh" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="funcionario_rg" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="funcionario_endereco" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="funcionario_telefoneFixo" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="funcionario_telefoneCelular" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="cidade_codigo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="cidade" Relationship="Self.FK__funcionar__cidad__440B1D61" FromRole="funcionario" ToRole="cidade" />
+    <NavigationProperty Name="locacao" Relationship="Self.FK__locacao__funcion__4E88ABD4" FromRole="funcionario" ToRole="locacao" />
+  </EntityType>
+  <EntityType Name="locacao">
+    <Key>
+      <PropertyRef Name="locacao_codigo" />
+    </Key>
+    <Property Name="locacao_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="locacao_dataLocacao" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="locacao_dataDevolucaoPrevista" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="locacao_qtdeDias" Type="Int32" Nullable="false" />
+    <Property Name="funcionario_codigo" Type="Int32" Nullable="false" />
+    <Property Name="cliente_codigo" Type="Int32" Nullable="false" />
+    <Property Name="carro_codigo" Type="Int32" Nullable="false" />
+    <Property Name="filial_codigo" Type="Int32" Nullable="false" />
+    <Property Name="locacao_totalLocacao" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="tipopagamento_codigo" Type="Int32" Nullable="false" />
+    <Property Name="status_codigo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="carro" Relationship="Self.FK__locacao__carro_c__4CA06362" FromRole="locacao" ToRole="carro" />
+    <NavigationProperty Name="cliente" Relationship="Self.FK__locacao__cliente__4D94879B" FromRole="locacao" ToRole="cliente" />
+    <NavigationProperty Name="devolucao" Relationship="Self.FK__devolucao__locac__2645B050" FromRole="locacao" ToRole="devolucao" />
+    <NavigationProperty Name="filial" Relationship="Self.FK__locacao__filial___628FA481" FromRole="locacao" ToRole="filial" />
+    <NavigationProperty Name="funcionario" Relationship="Self.FK__locacao__funcion__4E88ABD4" FromRole="locacao" ToRole="funcionario" />
+    <NavigationProperty Name="status" Relationship="Self.FK__locacao__status___32AB8735" FromRole="locacao" ToRole="status" />
+    <NavigationProperty Name="tipopagamento" Relationship="Self.FK__locacao__tipopag__5070F446" FromRole="locacao" ToRole="tipopagamento" />
+  </EntityType>
+  <EntityType Name="status">
+    <Key>
+      <PropertyRef Name="status_codigo" />
+    </Key>
+    <Property Name="status_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status_nome" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="carro" Relationship="Self.FK__carro__status_co__412EB0B6" FromRole="status" ToRole="carro" />
+    <NavigationProperty Name="devolucao" Relationship="Self.FK__devolucao__statu__44CA3770" FromRole="status" ToRole="devolucao" />
+    <NavigationProperty Name="locacao" Relationship="Self.FK__locacao__status___32AB8735" FromRole="status" ToRole="locacao" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="tipocarro">
+    <Key>
+      <PropertyRef Name="tipocarro_codigo" />
+    </Key>
+    <Property Name="tipocarro_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipocarro_tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="tipocarro_valor" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="carro" Relationship="Self.FK__carro__tipocarro__5EBF139D" FromRole="tipocarro" ToRole="carro" />
+  </EntityType>
+  <EntityType Name="tipopagamento">
+    <Key>
+      <PropertyRef Name="tipopagamento_codigo" />
+    </Key>
+    <Property Name="tipopagamento_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipopagamento_nome" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="devolucao" Relationship="Self.FK__devolucao__tipop__25518C17" FromRole="tipopagamento" ToRole="devolucao" />
+    <NavigationProperty Name="locacao" Relationship="Self.FK__locacao__tipopag__5070F446" FromRole="tipopagamento" ToRole="locacao" />
+  </EntityType>
+  <EntityType Name="vw_carro">
+    <Key>
+      <PropertyRef Name="carro_codigo" />
+      <PropertyRef Name="carro_marca" />
+      <PropertyRef Name="carro_modelo" />
+      <PropertyRef Name="carro_ano" />
+      <PropertyRef Name="carro_placa" />
+      <PropertyRef Name="carro_km" />
+      <PropertyRef Name="status_nome" />
+    </Key>
+    <Property Name="carro_codigo" Type="Int32" Nullable="false" />
+    <Property Name="carro_nome" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="carro_marca" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="carro_modelo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="carro_ano" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="carro_placa" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="carro_km" Type="Int32" Nullable="false" />
+    <Property Name="carro_cor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="carro_valorDiaria" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="tipocarro_tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="status_nome" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vw_cidades">
+    <Key>
+      <PropertyRef Name="cidade_codigo" />
+      <PropertyRef Name="cidade_nome" />
+      <PropertyRef Name="cidade_uf" />
+    </Key>
+    <Property Name="cidade_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cidade_nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cidade_uf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vw_cliente">
+    <Key>
+      <PropertyRef Name="cliente_codigo" />
+      <PropertyRef Name="cliente_nome" />
+      <PropertyRef Name="cliente_cpf" />
+      <PropertyRef Name="cliente_dataNascimento" />
+      <PropertyRef Name="cliente_cnh" />
+      <PropertyRef Name="cliente_rg" />
+      <PropertyRef Name="cliente_endereco" />
+      <PropertyRef Name="cidade_nome" />
+    </Key>
+    <Property Name="cliente_codigo" Type="Int32" Nullable="false" />
+    <Property Name="cliente_nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cliente_cpf" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cliente_dataNascimento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="cliente_cnh" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cliente_rg" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cliente_endereco" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cliente_telefoneFixo" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="cliente_telefoneCelular" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="cidade_nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vw_devolucoes">
+    <Key>
+      <PropertyRef Name="devolucao_codigo" />
+      <PropertyRef Name="devolucao_dataEfetiva" />
+      <PropertyRef Name="locacao_codigo" />
+      <PropertyRef Name="locacao_dataDevolucaoPrevista" />
+      <PropertyRef Name="cliente_codigo" />
+      <PropertyRef Name="cliente_nome" />
+      <PropertyRef Name="carro_codigo" />
+      <PropertyRef Name="devolucao_km" />
+      <PropertyRef Name="status_codigo" />
+    </Key>
+    <Property Name="devolucao_codigo" Type="Int32" Nullable="false" />
+    <Property Name="devolucao_dataEfetiva" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="locacao_codigo" Type="Int32" Nullable="false" />
+    <Property Name="locacao_dataDevolucaoPrevista" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="cliente_codigo" Type="Int32" Nullable="false" />
+    <Property Name="cliente_nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="carro_codigo" Type="Int32" Nullable="false" />
+    <Property Name="carro_nome" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="devolucao_km" Type="Int32" Nullable="false" />
+    <Property Name="devolucao_multa" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="devolucao_diferencaDias" Type="Int32" />
+    <Property Name="status_codigo" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vw_filial">
+    <Key>
+      <PropertyRef Name="filial_codigo" />
+      <PropertyRef Name="cidade_nome" />
+    </Key>
+    <Property Name="filial_codigo" Type="Int32" Nullable="false" />
+    <Property Name="filial_nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cidade_nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vw_funcionario">
+    <Key>
+      <PropertyRef Name="funcionario_codigo" />
+      <PropertyRef Name="funcionario_nome" />
+      <PropertyRef Name="funcionario_cpf" />
+      <PropertyRef Name="funcionario_dataNascimento" />
+      <PropertyRef Name="funcionario_cnh" />
+      <PropertyRef Name="funcionario_rg" />
+      <PropertyRef Name="funcionario_endereco" />
+      <PropertyRef Name="cidade_nome" />
+    </Key>
+    <Property Name="funcionario_codigo" Type="Int32" Nullable="false" />
+    <Property Name="funcionario_nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="funcionario_cpf" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="funcionario_dataNascimento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="funcionario_cnh" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="funcionario_rg" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="funcionario_endereco" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="funcionario_telefoneFixo" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="funcionario_telefoneCelular" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="cidade_nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vw_locacoes">
+    <Key>
+      <PropertyRef Name="locacao_codigo" />
+      <PropertyRef Name="locacao_dataLocacao" />
+      <PropertyRef Name="locacao_dataDevolucaoPrevista" />
+      <PropertyRef Name="locacao_qtdeDias" />
+      <PropertyRef Name="locacao_totalLocacao" />
+      <PropertyRef Name="status_codigo" />
+      <PropertyRef Name="funcionario_codigo" />
+      <PropertyRef Name="funcionario_nome" />
+      <PropertyRef Name="cliente_codigo" />
+      <PropertyRef Name="cliente_nome" />
+      <PropertyRef Name="carro_codigo" />
+    </Key>
+    <Property Name="locacao_codigo" Type="Int32" Nullable="false" />
+    <Property Name="locacao_dataLocacao" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="locacao_dataDevolucaoPrevista" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="locacao_qtdeDias" Type="Int32" Nullable="false" />
+    <Property Name="locacao_totalLocacao" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="status_codigo" Type="Int32" Nullable="false" />
+    <Property Name="funcionario_codigo" Type="Int32" Nullable="false" />
+    <Property Name="funcionario_nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cliente_codigo" Type="Int32" Nullable="false" />
+    <Property Name="cliente_nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="carro_codigo" Type="Int32" Nullable="false" />
+    <Property Name="carro_nome" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vw_status">
+    <Key>
+      <PropertyRef Name="status_codigo" />
+      <PropertyRef Name="status_nome" />
+    </Key>
+    <Property Name="status_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status_nome" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vw_tipocarro">
+    <Key>
+      <PropertyRef Name="tipocarro_codigo" />
+    </Key>
+    <Property Name="tipocarro_codigo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tipocarro_tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="tipocarro_valor" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <Association Name="FK__carro__status_co__412EB0B6">
+    <End Role="status" Type="Self.status" Multiplicity="1" />
+    <End Role="carro" Type="Self.carro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status">
+        <PropertyRef Name="status_codigo" />
+      </Principal>
+      <Dependent Role="carro">
+        <PropertyRef Name="status_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__carro__tipocarro__5EBF139D">
+    <End Role="tipocarro" Type="Self.tipocarro" Multiplicity="0..1" />
+    <End Role="carro" Type="Self.carro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipocarro">
+        <PropertyRef Name="tipocarro_codigo" />
+      </Principal>
+      <Dependent Role="carro">
+        <PropertyRef Name="tipocarro_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__locacao__carro_c__4CA06362">
+    <End Role="carro" Type="Self.carro" Multiplicity="1" />
+    <End Role="locacao" Type="Self.locacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="carro">
+        <PropertyRef Name="carro_codigo" />
+      </Principal>
+      <Dependent Role="locacao">
+        <PropertyRef Name="carro_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__cliente__cidade___3C69FB99">
+    <End Role="cidade" Type="Self.cidade" Multiplicity="1" />
+    <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cidade">
+        <PropertyRef Name="cidade_codigo" />
+      </Principal>
+      <Dependent Role="cliente">
+        <PropertyRef Name="cidade_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__filial__cidade_c__6E01572D">
+    <End Role="cidade" Type="Self.cidade" Multiplicity="0..1" />
+    <End Role="filial" Type="Self.filial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cidade">
+        <PropertyRef Name="cidade_codigo" />
+      </Principal>
+      <Dependent Role="filial">
+        <PropertyRef Name="cidade_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__funcionar__cidad__440B1D61">
+    <End Role="cidade" Type="Self.cidade" Multiplicity="1" />
+    <End Role="funcionario" Type="Self.funcionario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cidade">
+        <PropertyRef Name="cidade_codigo" />
+      </Principal>
+      <Dependent Role="funcionario">
+        <PropertyRef Name="cidade_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__locacao__cliente__4D94879B">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+    <End Role="locacao" Type="Self.locacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="cliente_codigo" />
+      </Principal>
+      <Dependent Role="locacao">
+        <PropertyRef Name="cliente_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__devolucao__filia__619B8048">
+    <End Role="filial" Type="Self.filial" Multiplicity="1" />
+    <End Role="devolucao" Type="Self.devolucao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="filial">
+        <PropertyRef Name="filial_codigo" />
+      </Principal>
+      <Dependent Role="devolucao">
+        <PropertyRef Name="filial_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__devolucao__locac__2645B050">
+    <End Role="locacao" Type="Self.locacao" Multiplicity="1" />
+    <End Role="devolucao" Type="Self.devolucao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="locacao">
+        <PropertyRef Name="locacao_codigo" />
+      </Principal>
+      <Dependent Role="devolucao">
+        <PropertyRef Name="locacao_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__devolucao__statu__44CA3770">
+    <End Role="status" Type="Self.status" Multiplicity="1" />
+    <End Role="devolucao" Type="Self.devolucao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status">
+        <PropertyRef Name="status_codigo" />
+      </Principal>
+      <Dependent Role="devolucao">
+        <PropertyRef Name="status_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__devolucao__tipop__25518C17">
+    <End Role="tipopagamento" Type="Self.tipopagamento" Multiplicity="0..1" />
+    <End Role="devolucao" Type="Self.devolucao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipopagamento">
+        <PropertyRef Name="tipopagamento_codigo" />
+      </Principal>
+      <Dependent Role="devolucao">
+        <PropertyRef Name="tipopagamento_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__locacao__filial___628FA481">
+    <End Role="filial" Type="Self.filial" Multiplicity="1" />
+    <End Role="locacao" Type="Self.locacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="filial">
+        <PropertyRef Name="filial_codigo" />
+      </Principal>
+      <Dependent Role="locacao">
+        <PropertyRef Name="filial_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__locacao__funcion__4E88ABD4">
+    <End Role="funcionario" Type="Self.funcionario" Multiplicity="1" />
+    <End Role="locacao" Type="Self.locacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="funcionario">
+        <PropertyRef Name="funcionario_codigo" />
+      </Principal>
+      <Dependent Role="locacao">
+        <PropertyRef Name="funcionario_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__locacao__status___32AB8735">
+    <End Role="status" Type="Self.status" Multiplicity="1" />
+    <End Role="locacao" Type="Self.locacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status">
+        <PropertyRef Name="status_codigo" />
+      </Principal>
+      <Dependent Role="locacao">
+        <PropertyRef Name="status_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__locacao__tipopag__5070F446">
+    <End Role="tipopagamento" Type="Self.tipopagamento" Multiplicity="1" />
+    <End Role="locacao" Type="Self.locacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipopagamento">
+        <PropertyRef Name="tipopagamento_codigo" />
+      </Principal>
+      <Dependent Role="locacao">
+        <PropertyRef Name="tipopagamento_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="locadoraEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="carro" EntityType="Self.carro" />
+    <EntitySet Name="cidade" EntityType="Self.cidade" />
+    <EntitySet Name="cliente" EntityType="Self.cliente" />
+    <EntitySet Name="devolucao" EntityType="Self.devolucao" />
+    <EntitySet Name="filial" EntityType="Self.filial" />
+    <EntitySet Name="funcionario" EntityType="Self.funcionario" />
+    <EntitySet Name="locacao" EntityType="Self.locacao" />
+    <EntitySet Name="status" EntityType="Self.status" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="tipocarro" EntityType="Self.tipocarro" />
+    <EntitySet Name="tipopagamento" EntityType="Self.tipopagamento" />
+    <EntitySet Name="vw_carro" EntityType="Self.vw_carro" />
+    <EntitySet Name="vw_cidades" EntityType="Self.vw_cidades" />
+    <EntitySet Name="vw_cliente" EntityType="Self.vw_cliente" />
+    <EntitySet Name="vw_devolucoes" EntityType="Self.vw_devolucoes" />
+    <EntitySet Name="vw_filial" EntityType="Self.vw_filial" />
+    <EntitySet Name="vw_funcionario" EntityType="Self.vw_funcionario" />
+    <EntitySet Name="vw_locacoes" EntityType="Self.vw_locacoes" />
+    <EntitySet Name="vw_status" EntityType="Self.vw_status" />
+    <EntitySet Name="vw_tipocarro" EntityType="Self.vw_tipocarro" />
+    <AssociationSet Name="FK__carro__status_co__412EB0B6" Association="Self.FK__carro__status_co__412EB0B6">
+      <End Role="status" EntitySet="status" />
+      <End Role="carro" EntitySet="carro" />
+    </AssociationSet>
+    <AssociationSet Name="FK__carro__tipocarro__5EBF139D" Association="Self.FK__carro__tipocarro__5EBF139D">
+      <End Role="tipocarro" EntitySet="tipocarro" />
+      <End Role="carro" EntitySet="carro" />
+    </AssociationSet>
+    <AssociationSet Name="FK__locacao__carro_c__4CA06362" Association="Self.FK__locacao__carro_c__4CA06362">
+      <End Role="carro" EntitySet="carro" />
+      <End Role="locacao" EntitySet="locacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__cliente__cidade___3C69FB99" Association="Self.FK__cliente__cidade___3C69FB99">
+      <End Role="cidade" EntitySet="cidade" />
+      <End Role="cliente" EntitySet="cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__filial__cidade_c__6E01572D" Association="Self.FK__filial__cidade_c__6E01572D">
+      <End Role="cidade" EntitySet="cidade" />
+      <End Role="filial" EntitySet="filial" />
+    </AssociationSet>
+    <AssociationSet Name="FK__funcionar__cidad__440B1D61" Association="Self.FK__funcionar__cidad__440B1D61">
+      <End Role="cidade" EntitySet="cidade" />
+      <End Role="funcionario" EntitySet="funcionario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__locacao__cliente__4D94879B" Association="Self.FK__locacao__cliente__4D94879B">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="locacao" EntitySet="locacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__devolucao__filia__619B8048" Association="Self.FK__devolucao__filia__619B8048">
+      <End Role="filial" EntitySet="filial" />
+      <End Role="devolucao" EntitySet="devolucao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__devolucao__locac__2645B050" Association="Self.FK__devolucao__locac__2645B050">
+      <End Role="locacao" EntitySet="locacao" />
+      <End Role="devolucao" EntitySet="devolucao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__devolucao__statu__44CA3770" Association="Self.FK__devolucao__statu__44CA3770">
+      <End Role="status" EntitySet="status" />
+      <End Role="devolucao" EntitySet="devolucao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__devolucao__tipop__25518C17" Association="Self.FK__devolucao__tipop__25518C17">
+      <End Role="tipopagamento" EntitySet="tipopagamento" />
+      <End Role="devolucao" EntitySet="devolucao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__locacao__filial___628FA481" Association="Self.FK__locacao__filial___628FA481">
+      <End Role="filial" EntitySet="filial" />
+      <End Role="locacao" EntitySet="locacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__locacao__funcion__4E88ABD4" Association="Self.FK__locacao__funcion__4E88ABD4">
+      <End Role="funcionario" EntitySet="funcionario" />
+      <End Role="locacao" EntitySet="locacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__locacao__status___32AB8735" Association="Self.FK__locacao__status___32AB8735">
+      <End Role="status" EntitySet="status" />
+      <End Role="locacao" EntitySet="locacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__locacao__tipopag__5070F446" Association="Self.FK__locacao__tipopag__5070F446">
+      <End Role="tipopagamento" EntitySet="tipopagamento" />
+      <End Role="locacao" EntitySet="locacao" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(locadoraModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(locadoraModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="spLocacaoData" ReturnType="Collection(locadoraModel.spLocacaoData_Result)">
+      <Parameter Name="datainicio" Mode="In" Type="DateTime" />
+      <Parameter Name="datafim" Mode="In" Type="DateTime" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spLocacaoData_Result">
+    <Property Type="Int32" Name="locacao_codigo" Nullable="false" />
+    <Property Type="DateTime" Name="locacao_dataLocacao" Nullable="false" />
+    <Property Type="DateTime" Name="locacao_dataDevolucaoPrevista" Nullable="false" />
+    <Property Type="Int32" Name="locacao_qtdeDias" Nullable="false" />
+    <Property Type="Decimal" Name="locacao_totalLocacao" Nullable="false" Precision="19" />
+    <Property Type="Int32" Name="status_codigo" Nullable="false" />
+    <Property Type="Int32" Name="funcionario_codigo" Nullable="false" />
+    <Property Type="String" Name="funcionario_nome" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="cliente_codigo" Nullable="false" />
+    <Property Type="String" Name="cliente_nome" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="carro_codigo" Nullable="false" />
+    <Property Type="String" Name="carro_nome" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="devolucao_codigo" Nullable="true" />
+    <Property Type="DateTime" Name="devolucao_dataEfetiva" Nullable="true" />
+    <Property Type="Int32" Name="locacao_codigo1" Nullable="true" />
+    <Property Type="DateTime" Name="locacao_dataDevolucaoPrevista1" Nullable="true" />
+    <Property Type="Int32" Name="cliente_codigo1" Nullable="true" />
+    <Property Type="String" Name="cliente_nome1" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="carro_codigo1" Nullable="true" />
+    <Property Type="String" Name="carro_nome1" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="devolucao_km" Nullable="true" />
+    <Property Type="Decimal" Name="devolucao_multa" Nullable="true" Precision="19" />
+    <Property Type="Int32" Name="devolucao_diferencaDias" Nullable="true" />
+    <Property Type="Int32" Name="status_codigo1" Nullable="true" />
+    <Property Type="String" Name="StatusDevolucao" Nullable="false" MaxLength="13" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fe806ada730b48d98ef4d13b45c61790" Name="Diagram1">
+        <EntityTypeShape EntityType="locadoraModel.carro" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="locadoraModel.cidade" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="locadoraModel.cliente" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="locadoraModel.devolucao" Width="1.5" PointX="7.5" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="locadoraModel.filial" Width="1.5" PointX="3" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="locadoraModel.funcionario" Width="1.5" PointX="3" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="locadoraModel.locacao" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="locadoraModel.status" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="locadoraModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="locadoraModel.tipocarro" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="locadoraModel.tipopagamento" Width="1.5" PointX="3" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="locadoraModel.vw_carro" Width="1.5" PointX="7.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="locadoraModel.vw_cidades" Width="1.5" PointX="9.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="locadoraModel.vw_cliente" Width="1.5" PointX="9.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="locadoraModel.vw_devolucoes" Width="1.5" PointX="9.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="locadoraModel.vw_filial" Width="1.5" PointX="5.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="locadoraModel.vw_funcionario" Width="1.5" PointX="11.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="locadoraModel.vw_locacoes" Width="1.5" PointX="11.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="locadoraModel.vw_status" Width="1.5" PointX="11.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="locadoraModel.vw_tipocarro" Width="1.5" PointX="7.75" PointY="14.125" IsExpanded="true" />
+        <AssociationConnector Association="locadoraModel.FK__carro__status_co__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="locadoraModel.FK__carro__tipocarro__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="locadoraModel.FK__locacao__carro_c__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="locadoraModel.FK__cliente__cidade___3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="locadoraModel.FK__filial__cidade_c__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="locadoraModel.FK__funcionar__cidad__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="locadoraModel.FK__locacao__cliente__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="locadoraModel.FK__devolucao__filia__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="locadoraModel.FK__devolucao__locac__2645B050" ManuallyRouted="false" />
+        <AssociationConnector Association="locadoraModel.FK__devolucao__statu__44CA3770" ManuallyRouted="false" />
+        <AssociationConnector Association="locadoraModel.FK__devolucao__tipop__25518C17" ManuallyRouted="false" />
+        <AssociationConnector Association="locadoraModel.FK__locacao__filial___628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="locadoraModel.FK__locacao__funcion__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="locadoraModel.FK__locacao__status___32AB8735" ManuallyRouted="false" />
+        <AssociationConnector Association="locadoraModel.FK__locacao__tipopag__5070F446" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

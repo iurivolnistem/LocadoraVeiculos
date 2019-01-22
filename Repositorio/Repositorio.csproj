@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FA2644B2-5672-45AE-9ABE-7FBB5DC6E5BC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Repositorio</RootNamespace>
+    <AssemblyName>Repositorio</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="carro.cs">
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="carroRepositorio.cs" />
+    <Compile Include="cidade.cs">
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="cidadeRepositorio.cs" />
+    <Compile Include="cliente.cs">
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="clienteRepositorio.cs" />
+    <Compile Include="devolucao.cs">
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="devolucaoRepositorio.cs" />
+    <Compile Include="filial.cs">
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="filialRepositorio.cs" />
+    <Compile Include="funcionario.cs">
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="funcionarioRepositorio.cs" />
+    <Compile Include="locacao.cs">
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="locacaoRepositorio.cs" />
+    <Compile Include="LocadoraModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocadoraModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LocadoraModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LocadoraModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocadoraModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="spLocacaoData_Result.cs">
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="status.cs">
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="statusRepositorio.cs" />
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tipocarro.cs">
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tipocarroRepositorio.cs" />
+    <Compile Include="tipopagamento.cs">
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tipopagamentoRepositorio.cs" />
+    <Compile Include="vw_carro.cs">
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_cidades.cs">
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_cliente.cs">
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_devolucoes.cs">
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_filial.cs">
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_funcionario.cs">
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_locacoes.cs">
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_status.cs">
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_tipocarro.cs">
+      <DependentUpon>LocadoraModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="LocadoraModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LocadoraModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="LocadoraModel.edmx.diagram">
+      <DependentUpon>LocadoraModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LocadoraModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LocadoraModel.edmx</DependentUpon>
+      <LastGenOutput>LocadoraModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="LocadoraModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LocadoraModel.edmx</DependentUpon>
+      <LastGenOutput>LocadoraModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

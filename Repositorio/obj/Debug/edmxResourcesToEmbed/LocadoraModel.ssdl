@@ -1,0 +1,688 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="locadoraModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="carro">
+    <Key>
+      <PropertyRef Name="carro_codigo" />
+    </Key>
+    <Property Name="carro_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="carro_marca" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="carro_modelo" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="carro_ano" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="carro_placa" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="carro_km" Type="int" Nullable="false" />
+    <Property Name="status_codigo" Type="int" Nullable="false" />
+    <Property Name="tipocarro_codigo" Type="int" />
+    <Property Name="carro_cor" Type="varchar" MaxLength="20" />
+    <Property Name="carro_nome" Type="varchar" MaxLength="20" />
+    <Property Name="carro_valorDiaria" Type="money" />
+  </EntityType>
+  <EntityType Name="cidade">
+    <Key>
+      <PropertyRef Name="cidade_codigo" />
+    </Key>
+    <Property Name="cidade_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cidade_nome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cidade_uf" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="cliente_codigo" />
+    </Key>
+    <Property Name="cliente_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cliente_nome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cliente_cpf" Type="varchar" MaxLength="14" Nullable="false" />
+    <Property Name="cliente_dataNascimento" Type="date" Nullable="false" />
+    <Property Name="cliente_cnh" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="cliente_rg" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="cliente_endereco" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="cliente_telefoneFixo" Type="varchar" MaxLength="12" />
+    <Property Name="cliente_telefoneCelular" Type="varchar" MaxLength="13" />
+    <Property Name="cidade_codigo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="devolucao">
+    <Key>
+      <PropertyRef Name="devolucao_codigo" />
+    </Key>
+    <Property Name="devolucao_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="devolucao_dataEfetiva" Type="date" Nullable="false" />
+    <Property Name="filial_codigo" Type="int" Nullable="false" />
+    <Property Name="devolucao_km" Type="int" Nullable="false" />
+    <Property Name="devolucao_multa" Type="money" />
+    <Property Name="tipopagamento_codigo" Type="int" />
+    <Property Name="locacao_codigo" Type="int" Nullable="false" />
+    <Property Name="status_codigo" Type="int" Nullable="false" />
+    <Property Name="devolucao_diferencaDias" Type="int" />
+  </EntityType>
+  <EntityType Name="filial">
+    <Key>
+      <PropertyRef Name="filial_codigo" />
+    </Key>
+    <Property Name="filial_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="filial_nome" Type="varchar" MaxLength="50" />
+    <Property Name="cidade_codigo" Type="int" />
+  </EntityType>
+  <EntityType Name="funcionario">
+    <Key>
+      <PropertyRef Name="funcionario_codigo" />
+    </Key>
+    <Property Name="funcionario_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="funcionario_nome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="funcionario_cpf" Type="varchar" MaxLength="14" Nullable="false" />
+    <Property Name="funcionario_dataNascimento" Type="date" Nullable="false" />
+    <Property Name="funcionario_cnh" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="funcionario_rg" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="funcionario_endereco" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="funcionario_telefoneFixo" Type="varchar" MaxLength="12" />
+    <Property Name="funcionario_telefoneCelular" Type="varchar" MaxLength="13" />
+    <Property Name="cidade_codigo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="locacao">
+    <Key>
+      <PropertyRef Name="locacao_codigo" />
+    </Key>
+    <Property Name="locacao_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="locacao_dataLocacao" Type="date" Nullable="false" />
+    <Property Name="locacao_dataDevolucaoPrevista" Type="date" Nullable="false" />
+    <Property Name="locacao_qtdeDias" Type="int" Nullable="false" />
+    <Property Name="funcionario_codigo" Type="int" Nullable="false" />
+    <Property Name="cliente_codigo" Type="int" Nullable="false" />
+    <Property Name="carro_codigo" Type="int" Nullable="false" />
+    <Property Name="filial_codigo" Type="int" Nullable="false" />
+    <Property Name="locacao_totalLocacao" Type="money" Nullable="false" />
+    <Property Name="tipopagamento_codigo" Type="int" Nullable="false" />
+    <Property Name="status_codigo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="status">
+    <Key>
+      <PropertyRef Name="status_codigo" />
+    </Key>
+    <Property Name="status_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="status_nome" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tipocarro">
+    <Key>
+      <PropertyRef Name="tipocarro_codigo" />
+    </Key>
+    <Property Name="tipocarro_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipocarro_tipo" Type="varchar" MaxLength="20" />
+    <Property Name="tipocarro_valor" Type="money" />
+  </EntityType>
+  <EntityType Name="tipopagamento">
+    <Key>
+      <PropertyRef Name="tipopagamento_codigo" />
+    </Key>
+    <Property Name="tipopagamento_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipopagamento_nome" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'locadora.dbo.vw_carro' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_carro">
+    <Key>
+      <PropertyRef Name="carro_codigo" />
+      <PropertyRef Name="carro_marca" />
+      <PropertyRef Name="carro_modelo" />
+      <PropertyRef Name="carro_ano" />
+      <PropertyRef Name="carro_placa" />
+      <PropertyRef Name="carro_km" />
+      <PropertyRef Name="status_nome" />
+    </Key>
+    <Property Name="carro_codigo" Type="int" Nullable="false" />
+    <Property Name="carro_nome" Type="varchar" MaxLength="20" />
+    <Property Name="carro_marca" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="carro_modelo" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="carro_ano" Type="varchar" MaxLength="4" Nullable="false" />
+    <Property Name="carro_placa" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="carro_km" Type="int" Nullable="false" />
+    <Property Name="carro_cor" Type="varchar" MaxLength="20" />
+    <Property Name="carro_valorDiaria" Type="money" />
+    <Property Name="tipocarro_tipo" Type="varchar" MaxLength="20" />
+    <Property Name="status_nome" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'locadora.dbo.vw_cidades' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_cidades">
+    <Key>
+      <PropertyRef Name="cidade_codigo" />
+      <PropertyRef Name="cidade_nome" />
+      <PropertyRef Name="cidade_uf" />
+    </Key>
+    <Property Name="cidade_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cidade_nome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cidade_uf" Type="varchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'locadora.dbo.vw_cliente' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_cliente">
+    <Key>
+      <PropertyRef Name="cliente_codigo" />
+      <PropertyRef Name="cliente_nome" />
+      <PropertyRef Name="cliente_cpf" />
+      <PropertyRef Name="cliente_dataNascimento" />
+      <PropertyRef Name="cliente_cnh" />
+      <PropertyRef Name="cliente_rg" />
+      <PropertyRef Name="cliente_endereco" />
+      <PropertyRef Name="cidade_nome" />
+    </Key>
+    <Property Name="cliente_codigo" Type="int" Nullable="false" />
+    <Property Name="cliente_nome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cliente_cpf" Type="varchar" MaxLength="14" Nullable="false" />
+    <Property Name="cliente_dataNascimento" Type="date" Nullable="false" />
+    <Property Name="cliente_cnh" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="cliente_rg" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="cliente_endereco" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="cliente_telefoneFixo" Type="varchar" MaxLength="12" />
+    <Property Name="cliente_telefoneCelular" Type="varchar" MaxLength="13" />
+    <Property Name="cidade_nome" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'locadora.dbo.vw_devolucoes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_devolucoes">
+    <Key>
+      <PropertyRef Name="devolucao_codigo" />
+      <PropertyRef Name="devolucao_dataEfetiva" />
+      <PropertyRef Name="locacao_codigo" />
+      <PropertyRef Name="locacao_dataDevolucaoPrevista" />
+      <PropertyRef Name="cliente_codigo" />
+      <PropertyRef Name="cliente_nome" />
+      <PropertyRef Name="carro_codigo" />
+      <PropertyRef Name="devolucao_km" />
+      <PropertyRef Name="status_codigo" />
+    </Key>
+    <Property Name="devolucao_codigo" Type="int" Nullable="false" />
+    <Property Name="devolucao_dataEfetiva" Type="date" Nullable="false" />
+    <Property Name="locacao_codigo" Type="int" Nullable="false" />
+    <Property Name="locacao_dataDevolucaoPrevista" Type="date" Nullable="false" />
+    <Property Name="cliente_codigo" Type="int" Nullable="false" />
+    <Property Name="cliente_nome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="carro_codigo" Type="int" Nullable="false" />
+    <Property Name="carro_nome" Type="varchar" MaxLength="20" />
+    <Property Name="devolucao_km" Type="int" Nullable="false" />
+    <Property Name="devolucao_multa" Type="money" />
+    <Property Name="devolucao_diferencaDias" Type="int" />
+    <Property Name="status_codigo" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'locadora.dbo.vw_filial' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_filial">
+    <Key>
+      <PropertyRef Name="filial_codigo" />
+      <PropertyRef Name="cidade_nome" />
+    </Key>
+    <Property Name="filial_codigo" Type="int" Nullable="false" />
+    <Property Name="filial_nome" Type="varchar" MaxLength="50" />
+    <Property Name="cidade_nome" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'locadora.dbo.vw_funcionario' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_funcionario">
+    <Key>
+      <PropertyRef Name="funcionario_codigo" />
+      <PropertyRef Name="funcionario_nome" />
+      <PropertyRef Name="funcionario_cpf" />
+      <PropertyRef Name="funcionario_dataNascimento" />
+      <PropertyRef Name="funcionario_cnh" />
+      <PropertyRef Name="funcionario_rg" />
+      <PropertyRef Name="funcionario_endereco" />
+      <PropertyRef Name="cidade_nome" />
+    </Key>
+    <Property Name="funcionario_codigo" Type="int" Nullable="false" />
+    <Property Name="funcionario_nome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="funcionario_cpf" Type="varchar" MaxLength="14" Nullable="false" />
+    <Property Name="funcionario_dataNascimento" Type="date" Nullable="false" />
+    <Property Name="funcionario_cnh" Type="varchar" MaxLength="11" Nullable="false" />
+    <Property Name="funcionario_rg" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="funcionario_endereco" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="funcionario_telefoneFixo" Type="varchar" MaxLength="12" />
+    <Property Name="funcionario_telefoneCelular" Type="varchar" MaxLength="13" />
+    <Property Name="cidade_nome" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'locadora.dbo.vw_locacoes' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_locacoes">
+    <Key>
+      <PropertyRef Name="locacao_codigo" />
+      <PropertyRef Name="locacao_dataLocacao" />
+      <PropertyRef Name="locacao_dataDevolucaoPrevista" />
+      <PropertyRef Name="locacao_qtdeDias" />
+      <PropertyRef Name="locacao_totalLocacao" />
+      <PropertyRef Name="status_codigo" />
+      <PropertyRef Name="funcionario_codigo" />
+      <PropertyRef Name="funcionario_nome" />
+      <PropertyRef Name="cliente_codigo" />
+      <PropertyRef Name="cliente_nome" />
+      <PropertyRef Name="carro_codigo" />
+    </Key>
+    <Property Name="locacao_codigo" Type="int" Nullable="false" />
+    <Property Name="locacao_dataLocacao" Type="date" Nullable="false" />
+    <Property Name="locacao_dataDevolucaoPrevista" Type="date" Nullable="false" />
+    <Property Name="locacao_qtdeDias" Type="int" Nullable="false" />
+    <Property Name="locacao_totalLocacao" Type="money" Nullable="false" />
+    <Property Name="status_codigo" Type="int" Nullable="false" />
+    <Property Name="funcionario_codigo" Type="int" Nullable="false" />
+    <Property Name="funcionario_nome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cliente_codigo" Type="int" Nullable="false" />
+    <Property Name="cliente_nome" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="carro_codigo" Type="int" Nullable="false" />
+    <Property Name="carro_nome" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'locadora.dbo.vw_status' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_status">
+    <Key>
+      <PropertyRef Name="status_codigo" />
+      <PropertyRef Name="status_nome" />
+    </Key>
+    <Property Name="status_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="status_nome" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'locadora.dbo.vw_tipocarro' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vw_tipocarro">
+    <Key>
+      <PropertyRef Name="tipocarro_codigo" />
+    </Key>
+    <Property Name="tipocarro_codigo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tipocarro_tipo" Type="varchar" MaxLength="20" />
+    <Property Name="tipocarro_valor" Type="money" />
+  </EntityType>
+  <Association Name="FK__carro__status_co__412EB0B6">
+    <End Role="status" Type="Self.status" Multiplicity="1" />
+    <End Role="carro" Type="Self.carro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status">
+        <PropertyRef Name="status_codigo" />
+      </Principal>
+      <Dependent Role="carro">
+        <PropertyRef Name="status_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__carro__tipocarro__5EBF139D">
+    <End Role="tipocarro" Type="Self.tipocarro" Multiplicity="0..1" />
+    <End Role="carro" Type="Self.carro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipocarro">
+        <PropertyRef Name="tipocarro_codigo" />
+      </Principal>
+      <Dependent Role="carro">
+        <PropertyRef Name="tipocarro_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__cliente__cidade___3C69FB99">
+    <End Role="cidade" Type="Self.cidade" Multiplicity="1" />
+    <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cidade">
+        <PropertyRef Name="cidade_codigo" />
+      </Principal>
+      <Dependent Role="cliente">
+        <PropertyRef Name="cidade_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__devolucao__filia__619B8048">
+    <End Role="filial" Type="Self.filial" Multiplicity="1" />
+    <End Role="devolucao" Type="Self.devolucao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="filial">
+        <PropertyRef Name="filial_codigo" />
+      </Principal>
+      <Dependent Role="devolucao">
+        <PropertyRef Name="filial_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__devolucao__locac__2645B050">
+    <End Role="locacao" Type="Self.locacao" Multiplicity="1" />
+    <End Role="devolucao" Type="Self.devolucao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="locacao">
+        <PropertyRef Name="locacao_codigo" />
+      </Principal>
+      <Dependent Role="devolucao">
+        <PropertyRef Name="locacao_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__devolucao__statu__44CA3770">
+    <End Role="status" Type="Self.status" Multiplicity="1" />
+    <End Role="devolucao" Type="Self.devolucao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status">
+        <PropertyRef Name="status_codigo" />
+      </Principal>
+      <Dependent Role="devolucao">
+        <PropertyRef Name="status_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__devolucao__tipop__25518C17">
+    <End Role="tipopagamento" Type="Self.tipopagamento" Multiplicity="0..1" />
+    <End Role="devolucao" Type="Self.devolucao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipopagamento">
+        <PropertyRef Name="tipopagamento_codigo" />
+      </Principal>
+      <Dependent Role="devolucao">
+        <PropertyRef Name="tipopagamento_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__filial__cidade_c__6E01572D">
+    <End Role="cidade" Type="Self.cidade" Multiplicity="0..1" />
+    <End Role="filial" Type="Self.filial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cidade">
+        <PropertyRef Name="cidade_codigo" />
+      </Principal>
+      <Dependent Role="filial">
+        <PropertyRef Name="cidade_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__funcionar__cidad__440B1D61">
+    <End Role="cidade" Type="Self.cidade" Multiplicity="1" />
+    <End Role="funcionario" Type="Self.funcionario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cidade">
+        <PropertyRef Name="cidade_codigo" />
+      </Principal>
+      <Dependent Role="funcionario">
+        <PropertyRef Name="cidade_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__locacao__carro_c__4CA06362">
+    <End Role="carro" Type="Self.carro" Multiplicity="1" />
+    <End Role="locacao" Type="Self.locacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="carro">
+        <PropertyRef Name="carro_codigo" />
+      </Principal>
+      <Dependent Role="locacao">
+        <PropertyRef Name="carro_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__locacao__cliente__4D94879B">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+    <End Role="locacao" Type="Self.locacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="cliente_codigo" />
+      </Principal>
+      <Dependent Role="locacao">
+        <PropertyRef Name="cliente_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__locacao__filial___628FA481">
+    <End Role="filial" Type="Self.filial" Multiplicity="1" />
+    <End Role="locacao" Type="Self.locacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="filial">
+        <PropertyRef Name="filial_codigo" />
+      </Principal>
+      <Dependent Role="locacao">
+        <PropertyRef Name="filial_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__locacao__funcion__4E88ABD4">
+    <End Role="funcionario" Type="Self.funcionario" Multiplicity="1" />
+    <End Role="locacao" Type="Self.locacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="funcionario">
+        <PropertyRef Name="funcionario_codigo" />
+      </Principal>
+      <Dependent Role="locacao">
+        <PropertyRef Name="funcionario_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__locacao__status___32AB8735">
+    <End Role="status" Type="Self.status" Multiplicity="1" />
+    <End Role="locacao" Type="Self.locacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="status">
+        <PropertyRef Name="status_codigo" />
+      </Principal>
+      <Dependent Role="locacao">
+        <PropertyRef Name="status_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__locacao__tipopag__5070F446">
+    <End Role="tipopagamento" Type="Self.tipopagamento" Multiplicity="1" />
+    <End Role="locacao" Type="Self.locacao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipopagamento">
+        <PropertyRef Name="tipopagamento_codigo" />
+      </Principal>
+      <Dependent Role="locacao">
+        <PropertyRef Name="tipopagamento_codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spLocacaoData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="datainicio" Type="datetime" Mode="In" />
+    <Parameter Name="datafim" Type="datetime" Mode="In" />
+  </Function>
+  <EntityContainer Name="locadoraModelStoreContainer">
+    <EntitySet Name="carro" EntityType="Self.carro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cidade" EntityType="Self.cidade" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cliente" EntityType="Self.cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="devolucao" EntityType="Self.devolucao" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="filial" EntityType="Self.filial" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="funcionario" EntityType="Self.funcionario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="locacao" EntityType="Self.locacao" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="status" EntityType="Self.status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipocarro" EntityType="Self.tipocarro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipopagamento" EntityType="Self.tipopagamento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="vw_carro" EntityType="Self.vw_carro" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_carro].[carro_codigo] AS [carro_codigo], 
+    [vw_carro].[carro_nome] AS [carro_nome], 
+    [vw_carro].[carro_marca] AS [carro_marca], 
+    [vw_carro].[carro_modelo] AS [carro_modelo], 
+    [vw_carro].[carro_ano] AS [carro_ano], 
+    [vw_carro].[carro_placa] AS [carro_placa], 
+    [vw_carro].[carro_km] AS [carro_km], 
+    [vw_carro].[carro_cor] AS [carro_cor], 
+    [vw_carro].[carro_valorDiaria] AS [carro_valorDiaria], 
+    [vw_carro].[tipocarro_tipo] AS [tipocarro_tipo], 
+    [vw_carro].[status_nome] AS [status_nome]
+    FROM [dbo].[vw_carro] AS [vw_carro]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_cidades" EntityType="Self.vw_cidades" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_cidades].[cidade_codigo] AS [cidade_codigo], 
+    [vw_cidades].[cidade_nome] AS [cidade_nome], 
+    [vw_cidades].[cidade_uf] AS [cidade_uf]
+    FROM [dbo].[vw_cidades] AS [vw_cidades]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_cliente" EntityType="Self.vw_cliente" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_cliente].[cliente_codigo] AS [cliente_codigo], 
+    [vw_cliente].[cliente_nome] AS [cliente_nome], 
+    [vw_cliente].[cliente_cpf] AS [cliente_cpf], 
+    [vw_cliente].[cliente_dataNascimento] AS [cliente_dataNascimento], 
+    [vw_cliente].[cliente_cnh] AS [cliente_cnh], 
+    [vw_cliente].[cliente_rg] AS [cliente_rg], 
+    [vw_cliente].[cliente_endereco] AS [cliente_endereco], 
+    [vw_cliente].[cliente_telefoneFixo] AS [cliente_telefoneFixo], 
+    [vw_cliente].[cliente_telefoneCelular] AS [cliente_telefoneCelular], 
+    [vw_cliente].[cidade_nome] AS [cidade_nome]
+    FROM [dbo].[vw_cliente] AS [vw_cliente]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_devolucoes" EntityType="Self.vw_devolucoes" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_devolucoes].[devolucao_codigo] AS [devolucao_codigo], 
+    [vw_devolucoes].[devolucao_dataEfetiva] AS [devolucao_dataEfetiva], 
+    [vw_devolucoes].[locacao_codigo] AS [locacao_codigo], 
+    [vw_devolucoes].[locacao_dataDevolucaoPrevista] AS [locacao_dataDevolucaoPrevista], 
+    [vw_devolucoes].[cliente_codigo] AS [cliente_codigo], 
+    [vw_devolucoes].[cliente_nome] AS [cliente_nome], 
+    [vw_devolucoes].[carro_codigo] AS [carro_codigo], 
+    [vw_devolucoes].[carro_nome] AS [carro_nome], 
+    [vw_devolucoes].[devolucao_km] AS [devolucao_km], 
+    [vw_devolucoes].[devolucao_multa] AS [devolucao_multa], 
+    [vw_devolucoes].[devolucao_diferencaDias] AS [devolucao_diferencaDias], 
+    [vw_devolucoes].[status_codigo] AS [status_codigo]
+    FROM [dbo].[vw_devolucoes] AS [vw_devolucoes]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_filial" EntityType="Self.vw_filial" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_filial].[filial_codigo] AS [filial_codigo], 
+    [vw_filial].[filial_nome] AS [filial_nome], 
+    [vw_filial].[cidade_nome] AS [cidade_nome]
+    FROM [dbo].[vw_filial] AS [vw_filial]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_funcionario" EntityType="Self.vw_funcionario" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_funcionario].[funcionario_codigo] AS [funcionario_codigo], 
+    [vw_funcionario].[funcionario_nome] AS [funcionario_nome], 
+    [vw_funcionario].[funcionario_cpf] AS [funcionario_cpf], 
+    [vw_funcionario].[funcionario_dataNascimento] AS [funcionario_dataNascimento], 
+    [vw_funcionario].[funcionario_cnh] AS [funcionario_cnh], 
+    [vw_funcionario].[funcionario_rg] AS [funcionario_rg], 
+    [vw_funcionario].[funcionario_endereco] AS [funcionario_endereco], 
+    [vw_funcionario].[funcionario_telefoneFixo] AS [funcionario_telefoneFixo], 
+    [vw_funcionario].[funcionario_telefoneCelular] AS [funcionario_telefoneCelular], 
+    [vw_funcionario].[cidade_nome] AS [cidade_nome]
+    FROM [dbo].[vw_funcionario] AS [vw_funcionario]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_locacoes" EntityType="Self.vw_locacoes" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_locacoes].[locacao_codigo] AS [locacao_codigo], 
+    [vw_locacoes].[locacao_dataLocacao] AS [locacao_dataLocacao], 
+    [vw_locacoes].[locacao_dataDevolucaoPrevista] AS [locacao_dataDevolucaoPrevista], 
+    [vw_locacoes].[locacao_qtdeDias] AS [locacao_qtdeDias], 
+    [vw_locacoes].[locacao_totalLocacao] AS [locacao_totalLocacao], 
+    [vw_locacoes].[status_codigo] AS [status_codigo], 
+    [vw_locacoes].[funcionario_codigo] AS [funcionario_codigo], 
+    [vw_locacoes].[funcionario_nome] AS [funcionario_nome], 
+    [vw_locacoes].[cliente_codigo] AS [cliente_codigo], 
+    [vw_locacoes].[cliente_nome] AS [cliente_nome], 
+    [vw_locacoes].[carro_codigo] AS [carro_codigo], 
+    [vw_locacoes].[carro_nome] AS [carro_nome]
+    FROM [dbo].[vw_locacoes] AS [vw_locacoes]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_status" EntityType="Self.vw_status" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_status].[status_codigo] AS [status_codigo], 
+    [vw_status].[status_nome] AS [status_nome]
+    FROM [dbo].[vw_status] AS [vw_status]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vw_tipocarro" EntityType="Self.vw_tipocarro" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vw_tipocarro].[tipocarro_codigo] AS [tipocarro_codigo], 
+    [vw_tipocarro].[tipocarro_tipo] AS [tipocarro_tipo], 
+    [vw_tipocarro].[tipocarro_valor] AS [tipocarro_valor]
+    FROM [dbo].[vw_tipocarro] AS [vw_tipocarro]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__carro__status_co__412EB0B6" Association="Self.FK__carro__status_co__412EB0B6">
+      <End Role="status" EntitySet="status" />
+      <End Role="carro" EntitySet="carro" />
+    </AssociationSet>
+    <AssociationSet Name="FK__carro__tipocarro__5EBF139D" Association="Self.FK__carro__tipocarro__5EBF139D">
+      <End Role="tipocarro" EntitySet="tipocarro" />
+      <End Role="carro" EntitySet="carro" />
+    </AssociationSet>
+    <AssociationSet Name="FK__cliente__cidade___3C69FB99" Association="Self.FK__cliente__cidade___3C69FB99">
+      <End Role="cidade" EntitySet="cidade" />
+      <End Role="cliente" EntitySet="cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__devolucao__filia__619B8048" Association="Self.FK__devolucao__filia__619B8048">
+      <End Role="filial" EntitySet="filial" />
+      <End Role="devolucao" EntitySet="devolucao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__devolucao__locac__2645B050" Association="Self.FK__devolucao__locac__2645B050">
+      <End Role="locacao" EntitySet="locacao" />
+      <End Role="devolucao" EntitySet="devolucao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__devolucao__statu__44CA3770" Association="Self.FK__devolucao__statu__44CA3770">
+      <End Role="status" EntitySet="status" />
+      <End Role="devolucao" EntitySet="devolucao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__devolucao__tipop__25518C17" Association="Self.FK__devolucao__tipop__25518C17">
+      <End Role="tipopagamento" EntitySet="tipopagamento" />
+      <End Role="devolucao" EntitySet="devolucao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__filial__cidade_c__6E01572D" Association="Self.FK__filial__cidade_c__6E01572D">
+      <End Role="cidade" EntitySet="cidade" />
+      <End Role="filial" EntitySet="filial" />
+    </AssociationSet>
+    <AssociationSet Name="FK__funcionar__cidad__440B1D61" Association="Self.FK__funcionar__cidad__440B1D61">
+      <End Role="cidade" EntitySet="cidade" />
+      <End Role="funcionario" EntitySet="funcionario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__locacao__carro_c__4CA06362" Association="Self.FK__locacao__carro_c__4CA06362">
+      <End Role="carro" EntitySet="carro" />
+      <End Role="locacao" EntitySet="locacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__locacao__cliente__4D94879B" Association="Self.FK__locacao__cliente__4D94879B">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="locacao" EntitySet="locacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__locacao__filial___628FA481" Association="Self.FK__locacao__filial___628FA481">
+      <End Role="filial" EntitySet="filial" />
+      <End Role="locacao" EntitySet="locacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__locacao__funcion__4E88ABD4" Association="Self.FK__locacao__funcion__4E88ABD4">
+      <End Role="funcionario" EntitySet="funcionario" />
+      <End Role="locacao" EntitySet="locacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__locacao__status___32AB8735" Association="Self.FK__locacao__status___32AB8735">
+      <End Role="status" EntitySet="status" />
+      <End Role="locacao" EntitySet="locacao" />
+    </AssociationSet>
+    <AssociationSet Name="FK__locacao__tipopag__5070F446" Association="Self.FK__locacao__tipopag__5070F446">
+      <End Role="tipopagamento" EntitySet="tipopagamento" />
+      <End Role="locacao" EntitySet="locacao" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
